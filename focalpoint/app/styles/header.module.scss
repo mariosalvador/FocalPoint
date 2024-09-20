@@ -1,0 +1,42 @@
+
+.header{
+    background-color: rgb(255, 255, 255);
+    height: 70px;
+    width: 92%;
+    border-bottom: 1px solid #D7DDE9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .div{
+        width: 100%;
+        height: 90%;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .div>h2{
+        font-size: 26px;
+        font-weight: bolder;
+    }
+    .div>span{
+        color: rgba(0, 0, 0, 0.455);
+        font-weight: 500;
+    }
+
+    .div>section{
+        display: flex;
+        gap:5px;
+        flex-direction: row;
+        align-items: center;
+
+        height: 100%;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
+    
+}
