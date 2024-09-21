@@ -11,48 +11,47 @@ import { Modal } from '../modal/baseModal';
 
 
 type taskprops = {
-    label:string
+    label: string
 }[]
 
 
-const tarefas=[
+const tarefas = [
     {
-        label:'Lavar ',
-    }, 
+        label: 'Lavar ',
+    },
     {
-        label:'Lavar ',
+        label: 'Lavar ',
     }
 ]
 
 export const Form = () => {
-    const [isOpenModalNewTask,setIsOpenModalNewTask] = useState(false);
-    const [isOpenModalDeleteTask,setIsOpenModalDeleteTask] = useState(false);
-    const [task,setTask] = useState<taskprops>([]);
+    const [isOpenModalNewTask, setIsOpenModalNewTask] = useState(false);
+    const [isOpenModalDeleteTask, setIsOpenModalDeleteTask] = useState(false);
+    const [task, setTask] = useState<taskprops>([]);
     // const [completedTask, setCompleteTask] = useState<[]>();
 
     // const checkedTask = ()=>{
-          
-    // }
-    
-    useEffect(()=>{
-        setTask([...tarefas])
-    },[tarefas]);
 
-    function OpenModalNewTask(){
+    // }
+
+    useEffect(() => {
+        setTask([...tarefas])
+    }, [tarefas]);
+
+    function OpenModalNewTask() {
         setIsOpenModalNewTask(true);
         setIsOpenModalDeleteTask(false);
     }
 
-    function OpenModalDeleteTask(){
+    function OpenModalDeleteTask() {
         setIsOpenModalDeleteTask(true);
         setIsOpenModalNewTask(false);
     }
-    
-    function CloseModal(){
+
+    function CloseModal() {
         setIsOpenModalDeleteTask(false);
         setIsOpenModalNewTask(false);
     }
- 
 
     return (
         <section className={style.section}>
@@ -61,37 +60,36 @@ export const Form = () => {
                 <section className={style.toDo}>
                     {
                         task.map((value) => (
-                            <Dashed key={value.label} label={value.label} squareIcon={<Square  className={style.icon}/>}  binIcon={<Trash onClick={OpenModalDeleteTask} className={style.icon}  />} />
+                            <Dashed key={value.label} label={value.label} squareIcon={<Square className={style.icon} />} binIcon={<Trash onClick={OpenModalDeleteTask} className={style.icon} />} />
                         ))
                     }
                 </section>
 
                 <h2>Tarefas Finalizadas</h2>
 
-                
                 <section className={style.toDo}>
                     {
                         task.map((value) => (
-                            <Dashed key={value.label} label={value.label} squareCheckedIcon={<SquareCheck/>}  binIcon={<Trash onClick={OpenModalDeleteTask} className={style.icon}  />} />
+                            <Dashed key={value.label} label={value.label} squareCheckedIcon={<SquareCheck />} binIcon={<Trash onClick={OpenModalDeleteTask} className={style.icon} />} />
                         ))
                     }
                 </section>
-
-            </div>
+[]            </div>
 
             <button className={style.button} onClick={OpenModalNewTask}>Adicionar nova tarefa</button>
-                    {
-                        isOpenModalNewTask? <Modal tittleModal='Nova tarefa' titleTask='Título' cancelButton={CloseModal} />  : ""
-                    }
-                    {
-                        isOpenModalDeleteTask? <Modal tittleModal='Deletar tarefa' askOnRemove='Tem certeza que você deseja deletar essa tarefa?' cancelButton={CloseModal} />  : ""
-                    }
-                    
-                    
-                    
-          
-        </section>
 
+            {isOpenModalNewTask && (
+                <div className={style.modal_overlay} onClick={CloseModal}>
+                    <Modal tittleModal='Nova tarefa' titleTask='Título' cancelButton={CloseModal} />
+                </div>
+            )}
+
+            {isOpenModalDeleteTask && (
+                <div className={style.modal_overlay} onClick={CloseModal}>
+                    <Modal tittleModal='Deletar tarefa' askOnRemove='Tem certeza que você deseja deletar essa tarefa?' cancelButton={CloseModal} />
+                </div>
+            )}
+        </section>
     )
 
 }
