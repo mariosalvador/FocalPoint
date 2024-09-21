@@ -1,11 +1,14 @@
+.section {
+    width: 550px;
+    height: 600px;
 
-.section{
-    width: 500px;
-    height: 450px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+ 
 }
 
-.div{
+.div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,29 +18,33 @@
 
     border: 1px solid #EAECF0;
     border-radius: 16px;
+    overflow-y: auto;
 }
 
-.div>h2{
-    font-size: 16px;
+.div>h2 {
+    font-size: 18px;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.455);
     margin-bottom: 24px;
     margin-top: 24px;
 }
-.toDo{
+
+.toDo {
     display: flex;
     flex-direction: column;
-    gap:24px;
+    gap: 24px;
+    width: 100%;
 }
-.dash{
-    width: 390px;
+
+.dash {
+    width: 100%;
     height: 56px;
 
-    
+
     outline-style: dashed;
     outline-width: 2px;
     outline-color: #D7DDE9;
-    
+
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
@@ -46,22 +53,44 @@
     padding-left: 16px;
     padding-right: 16px;
 
-    &:hover{
+    &:hover {
         background-color: #F7F9FD;
         outline-style: none;
         transition: 0.5s;
     }
 }
-.dash>div{
+
+.dash>div {
     display: flex;
     gap: 18px;
     font-weight: 500;
 }
 
-.span{
+.icon {
     width: 24px;
     height: 24px;
     display: block;
-    background-color: aqua;
+    color: #B0BBD1;
+    cursor: pointer;
 }
 
+.squareCheck {
+    width: 24px;
+    height: 24px;
+    display: block;
+    color: #0796D3;
+    // background-color: ;
+    cursor: pointer;
+}
+
+.button {
+    background: linear-gradient(90deg, #0796d3 0%, #53c0f0 100%);
+    border-radius: 8px;
+    padding: 16px 24px;
+    width: 100%;
+    height: 51px;
+
+    font-weight: 550;
+    font-size: 16px;
+    color: #fff;
+}
