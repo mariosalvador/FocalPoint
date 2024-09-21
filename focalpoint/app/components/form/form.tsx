@@ -47,6 +47,11 @@ export const Form = () => {
         setIsOpenModalDeleteTask(true);
         setIsOpenModalNewTask(false);
     }
+    
+    function CloseModal(){
+        setIsOpenModalDeleteTask(false);
+        setIsOpenModalNewTask(false);
+    }
  
 
     return (
@@ -76,10 +81,10 @@ export const Form = () => {
 
             <button className={style.button} onClick={OpenModalNewTask}>Adicionar nova tarefa</button>
                     {
-                        isOpenModalNewTask? <Modal tittleModal='Nova tarefa' titleTask='Título'  />  : ""
+                        isOpenModalNewTask? <Modal tittleModal='Nova tarefa' titleTask='Título' cancelButton={CloseModal} />  : ""
                     }
                     {
-                        isOpenModalDeleteTask? <Modal tittleModal='Deletar tarefa' askOnRemove='Tem certeza que você deseja deletar essa tarefa?' />  : ""
+                        isOpenModalDeleteTask? <Modal tittleModal='Deletar tarefa' askOnRemove='Tem certeza que você deseja deletar essa tarefa?' cancelButton={CloseModal} />  : ""
                     }
                     
                     
