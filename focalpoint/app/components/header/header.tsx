@@ -1,6 +1,7 @@
 import logo from "@/public/focal-logo.png";
 import Image from "next/image";
 import style from '@/app/styles/header.module.scss';
+import { FormattedDate } from "@/app/lib/dayjs/formatDate";
 
 
 
@@ -15,7 +16,7 @@ export const Header = ()=>{
                 </section>
 
                 <h2>Bem-vindo de volta, Marcus</h2>
-                <span>Segunda, 01 de dezembro de 2025</span>
+               <FormattedDate/>
             </div>
             
         </header>
