@@ -12,10 +12,11 @@ interface IDashedProps {
 export const Dashed = ({ label, bin, checked, binIcon, squareIcon, squareCheckedIcon }: IDashedProps) => {
     return (
         <div className={style.dash}>
-            <div>
-                <span onClick={checked}>{squareIcon ?? squareCheckedIcon}</span>
-                <label className={`${squareCheckedIcon? style.label : ''} `}>{label}</label>
-            </div>
+
+            <span onClick={checked}>{squareIcon ?? squareCheckedIcon}</span>
+
+            <label className={` ${style.lb} ${squareCheckedIcon ? style.label : ''} `}>{label}</label>
+
 
             <div className={style.span} onClick={bin}>
                 {binIcon}
