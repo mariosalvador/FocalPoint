@@ -14,7 +14,7 @@ export const Dashed = ({ label, bin, checked, binIcon, squareIcon, squareChecked
         <div className={style.dash}>
             <div>
                 <span onClick={checked}>{squareIcon ?? squareCheckedIcon}</span>
-                <label className={style.label}>{label}</label>
+                <label className={`${squareCheckedIcon? style.label : ''} `}>{label}</label>
             </div>
 
             <div className={style.span} onClick={bin}>
