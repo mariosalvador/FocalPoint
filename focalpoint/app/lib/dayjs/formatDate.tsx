@@ -1,16 +1,27 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/pt-br'; // Importa o idioma português
-import style from '@/app/styles/formatted.module.scss'
+import 'dayjs/locale/pt-br';
+import style from '@/app/styles/formatted.module.scss';
+
+
+dayjs.locale('pt-br');
 
 export const FormattedDate = () => {
-    // Configura o locale para português
-    dayjs.locale('pt-br');
+    const [currentDate, setCurrentDate] = useState(dayjs());
 
-    // Pega a data atual
-    const currentDate = dayjs();
+    useEffect(() => {
+        const now = dayjs();
+        const startOfNextDay = now.add(1, 'day').startOf('day');
+        const timeUntilNextDay = startOfNextDay.diff(now);
 
-    // Formata a data para "Segunda, 01 de dezembro de 2025"
+        const timeout = setTimeout(() => {
+            setCurrentDate(dayjs());
+        }, timeUntilNextDay);
+
+        return () => clearTimeout(timeout);
+    }, [currentDate]);
+
     const formattedDate = currentDate.format('dddd, DD [de] MMMM [de] YYYY');
 
     return <span className={style.span}>{formattedDate}</span>;
