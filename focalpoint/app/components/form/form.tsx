@@ -1,15 +1,29 @@
 "use client";
 import style from '@/app/styles/form.module.scss';
 import { Dashed } from './dashed';
-import { Square, Trash } from 'lucide-react';
+import { Plus, Square, Trash } from 'lucide-react';
 import { SquareCheck } from '@/public/Checkbox';
 import { useState } from 'react';
 import { Modal } from '../modal/baseModal';
 
+
+const data = [
+    'Mara', 'João', 'Maria', 'Carlos', 'Ana',
+    'Luis', 'Bruna', 'Felipe', 'Camila', 'Rafaela',
+    'Gustavo', 'Fernanda', 'Lucas', 'Patrícia', 'Ricardo',
+    'Beatriz', 'Gabriel', 'Larissa', 'Rafael', 'Juliana',
+    'Tiago', 'Mariana', 'Rodrigo', 'Renata', 'André',
+    'Daniela', 'Eduardo', 'Tatiana', 'Marcelo', 'Sofia',
+    'Diogo', 'Isabel', 'Paulo', 'Simone', 'Pedro',
+    'Carla', 'Leonardo', 'Alice', 'Flávio', 'Natália',
+    'César', 'Luana', 'Antônio', 'Vanessa', 'Roberto',
+    'Sandra', 'Fábio', 'Elisa', 'Henrique', 'Luciana'
+];
+
 export const Form = () => {
     const [isOpenModalNewTask, setIsOpenModalNewTask] = useState(false);
     const [isOpenModalDeleteTask, setIsOpenModalDeleteTask] = useState(false);
-    const [task, setTask] = useState<string[]>([]); // Tarefas pendentes
+    const [task, setTask] = useState<string[]>(data); // Tarefas pendentes
     const [completedTasks, setCompletedTasks] = useState<string[]>([]); // Tarefas finalizadas
     const [taskToDelete, setTaskToDelete] = useState<string | null>(null); // Tarefa a ser deletada
 
@@ -19,7 +33,7 @@ export const Form = () => {
             alert('Já existe essa tarefa!');
         } else {
             setTask((prevState) => [...prevState, newTask]);
-            setIsOpenModalNewTask(false); 
+            setIsOpenModalNewTask(false);
         }
     };
 
@@ -40,8 +54,8 @@ export const Form = () => {
         if (taskToDelete) {
             setTask((prevState) => prevState.filter((t) => t !== taskToDelete));
             setCompletedTasks((prevState) => prevState.filter((t) => t !== taskToDelete));
-            setIsOpenModalDeleteTask(false); 
-            setTaskToDelete(null); 
+            setIsOpenModalDeleteTask(false);
+            setTaskToDelete(null);
         }
     };
 
@@ -59,42 +73,49 @@ export const Form = () => {
     function CloseModal() {
         setIsOpenModalDeleteTask(false);
         setIsOpenModalNewTask(false);
-        setTaskToDelete(null); 
+        setTaskToDelete(null);
     }
 
     return (
-        <section className={style.section}>
-            <div className={style.div}>
-                <h2>Suas tarefas de hoje</h2>
-                <section className={style.toDo}>
-                    {task.map((value) => (
-                        <Dashed
-                            key={value}
-                            label={value}
-                            squareIcon={<Square className={style.icon} />}
-                            checked={() => completeTask(value)} 
-                            binIcon={<Trash onClick={() => OpenModalDeleteTask(value)} className={style.icon} />}
-                        />
-                    ))}
-                </section>
+        <section className={`w-full h-full flex px-10 space-x-1 `}  >
+            <div className="w-full h-full mb-20 flex justify-between ">
+                <div className=' w-full px-5 overflow-auto [&::-webkit-scrollbar]:hidden'>
+                    <h2 className='mb-2 text-md font-medium text-black/50 '>Suas tarefas de hoje</h2>
+                    <section className={`${style.toDo}`}>
+                        {task.map((value) => (
+                            <Dashed
+                                key={value}
+                                label={value}
+                                squareIcon={<Square className={style.icon} />}
+                                checked={() => completeTask(value)}
+                                binIcon={<Trash onClick={() => OpenModalDeleteTask(value)} className={style.icon} />}
+                            />
+                        ))}
+                    </section>
+                </div>
 
-                <h2>Tarefas Finalizadas</h2>
+                <button className={`${style.button} p-1 w-[240px] h-[50px] flex justify-center items-center rounded-lg text-md font-medium text-white mt-[30px]`} onClick={OpenModalNewTask}>
+                    <Plus/>
+                    Adicionar nova tarefa
+                </button>
+
+            </div>
+            <div className=' w-[0.4px] h-full  bg-black/15 '></div> {/*Divider */}
+
+            <div className='w-[600px] h-full p-1 overflow-auto [&::-webkit-scrollbar]:hidden'>
+                <h2 className='mb-2 text-md font-medium text-black/50 '>Tarefas Finalizadas</h2>
                 <section className={style.toDo}>
                     {completedTasks.map((value) => (
                         <Dashed
                             key={value}
                             label={value}
                             squareCheckedIcon={<SquareCheck />}
-                            checked={() => undoTask(value)} 
+                            checked={() => undoTask(value)}
                             binIcon={<Trash onClick={() => OpenModalDeleteTask(value)} className={style.icon} />}
                         />
                     ))}
                 </section>
             </div>
-
-            <button className={style.button} onClick={OpenModalNewTask}>
-                Adicionar nova tarefa
-            </button>
 
             {isOpenModalNewTask && (
                 <div className={style.modal_overlay}>
@@ -121,3 +142,5 @@ export const Form = () => {
         </section>
     );
 };
+
+

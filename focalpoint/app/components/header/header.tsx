@@ -1,20 +1,27 @@
 import style from '@/app/styles/header.module.scss';
-import { FormattedDate } from "@/app/lib/dayjs/formatDate";
 import { Logo } from '@/public/logo';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 
 
-export const Header = ()=>{
+export const Header = () => {
     return (
         <header className={style.header}>
             <div className={style.div}>
                 <section>
-                    <Logo/>
+                    <Logo />
                 </section>
 
-                <h2>Bem-vindo de volta, Marcus</h2>
-               <FormattedDate/>
+                <h2>Bem-vindo de volta, Mário</h2>
+
+                <div className='flex items-center gap-3'>
+                    <span>Mario Paunnnnnnnnnlo</span>
+                    <Avatar className=''>
+
+                        <AvatarImage src='http://github.com/mariosalvador.png'></AvatarImage>
+                    </Avatar>
+                </div>
+
             </div>
-            
         </header>
     );
 }
