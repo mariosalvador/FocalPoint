@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Provider from "./provider";
 
 export const metadata: Metadata = {
   title: "Focal Point",
@@ -16,7 +17,9 @@ export default function RootLayout({
       <body
         className={`antialiased overflow-hidden `}
       >
-        {children}
+        <Provider>
+          {children}
+        </Provider>
       </body>
     </html>
   );

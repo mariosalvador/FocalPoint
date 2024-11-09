@@ -14,7 +14,7 @@ export const Header = () => {
                 <h2>Bem-vindo de volta, Mário</h2>
 
                 <div className='flex items-center gap-3'>
-                    <span>Mario Paunnnnnnnnnlo</span>
+                    <span>Mario Paulo</span>
                     <Avatar className=''>
 
                         <AvatarImage src='http://github.com/mariosalvador.png'></AvatarImage>
