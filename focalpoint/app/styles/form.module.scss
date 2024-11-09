@@ -17,6 +17,8 @@
     letter-spacing: -0.02em;
     text-decoration: line-through;
     color: rgba(0, 0, 0, 0.54);
+    background-color: #0796d3;
+    flex-wrap: wrap;
 }
 
 .span {
@@ -55,8 +57,10 @@
 
 .dash {
     width: 100%;
+    max-width: 600px;
     min-height: 56px;
-    flex-wrap: nowrap;
+    max-height: max-content;
+    flex-wrap: wrap;
 
     outline-style: dashed;
     outline-width: 2px;
