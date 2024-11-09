@@ -1,10 +1,14 @@
+/* eslint-disable no-var */
 import { PrismaClient } from "@prisma/client";
 
-let prismaClient: PrismaClient;
+declare global {
+  // Prevent multiple instances of PrismaClient in development
+  var prisma: PrismaClient | undefined;
+}
 
 export const getPrismaClient = () => {
-  if (!prismaClient) {
-    prismaClient = new PrismaClient();
+  if (!globalThis.prisma) {
+    globalThis.prisma = new PrismaClient();
   }
-  return prismaClient;
+  return globalThis.prisma;
 };
