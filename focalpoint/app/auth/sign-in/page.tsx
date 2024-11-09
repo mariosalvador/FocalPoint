@@ -1,3 +1,15 @@
+
+
+export default function SignIn(){
+  return(
+    <h1>ola</h1>
+  )
+};
+
+
+
+
+
 // "use client"
 // import { FC } from 'react';
 
